@@ -1,3 +1,3 @@
-public class tampilan {
-    
+public interface tampilan {
+    String tampilkanInfo();
 }
