@@ -15,4 +15,16 @@ public class JabatanController {
     public ArrayList<Jabatan> getDaftarJabatan() {
         return daftarJabatan;
     }
+
+    public Jabatan cari(String kodeJabatan) {
+
+        for (Jabatan jabatan : daftarJabatan) {
+
+            if (jabatan.getKodeJabatan().equalsIgnoreCase(kodeJabatan)) {
+                return jabatan;
+            }
+        }
+
+        return null;
+    }
 }

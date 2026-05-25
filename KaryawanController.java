@@ -25,4 +25,28 @@ public class KaryawanController {
     public ArrayList<KaryawanNonAktif> getDaftarNonAktif() {
         return daftarNonAktif;
     }
+
+    public KaryawanAktif cariAktif(String idKaryawan) {
+
+        for (KaryawanAktif karyawan : daftarAktif) {
+
+            if (karyawan.getIdKaryawan().equalsIgnoreCase(idKaryawan)) {
+                return karyawan;
+            }
+        }
+
+        return null;
+    }
+
+    public KaryawanNonAktif cariNonAktif(String idKaryawan) {
+
+        for (KaryawanNonAktif karyawan : daftarNonAktif) {
+
+            if (karyawan.getIdKaryawan().equalsIgnoreCase(idKaryawan)) {
+                return karyawan;
+            }
+        }
+
+        return null;
+    }
 }
