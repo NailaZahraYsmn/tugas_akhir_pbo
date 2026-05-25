@@ -27,4 +27,24 @@ public class JabatanController {
 
         return null;
     }
+
+    public void edit(String kodeJabatan, Jabatan dataBaru) {
+
+        Jabatan jabatan = cari(kodeJabatan);
+
+        if (jabatan != null) {
+
+            jabatan.setNamaJabatan(dataBaru.getNamaJabatan());
+            jabatan.setDepartemen(dataBaru.getDepartemen());
+        }
+    }
+
+    public void hapus(String kodeJabatan) {
+
+        Jabatan jabatan = cari(kodeJabatan);
+
+        if (jabatan != null) {
+            daftarJabatan.remove(jabatan);
+        }
+    }
 }

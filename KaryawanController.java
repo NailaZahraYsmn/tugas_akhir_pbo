@@ -49,4 +49,47 @@ public class KaryawanController {
 
         return null;
     }
+
+    public void editAktif(String idKaryawan, KaryawanAktif dataBaru) {
+
+        KaryawanAktif karyawan = cariAktif(idKaryawan);
+
+        if (karyawan != null) {
+
+            karyawan.setNama(dataBaru.getNama());
+            karyawan.setJabatan(dataBaru.getJabatan());
+            karyawan.setTanggalMasuk(dataBaru.getTanggalMasuk());
+        }
+    }
+
+    public void editNonAktif(String idKaryawan, KaryawanNonAktif dataBaru) {
+
+        KaryawanNonAktif karyawan = cariNonAktif(idKaryawan);
+
+        if (karyawan != null) {
+
+            karyawan.setNama(dataBaru.getNama());
+            karyawan.setJabatan(dataBaru.getJabatan());
+            karyawan.setTanggalKeluar(dataBaru.getTanggalKeluar());
+            karyawan.setKeterangan(dataBaru.getKeterangan());
+        }
+    }
+
+    public void hapusAktif(String idKaryawan) {
+
+        KaryawanAktif karyawan = cariAktif(idKaryawan);
+
+        if (karyawan != null) {
+            daftarAktif.remove(karyawan);
+        }
+    }
+
+    public void hapusNonAktif(String idKaryawan) {
+
+        KaryawanNonAktif karyawan = cariNonAktif(idKaryawan);
+
+        if (karyawan != null) {
+            daftarNonAktif.remove(karyawan);
+        }
+    }
 }
