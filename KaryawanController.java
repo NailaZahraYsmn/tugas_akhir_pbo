@@ -10,5 +10,19 @@ public class KaryawanController {
         daftarNonAktif = new ArrayList<>();
     }
 
+    public void tambahAktif(KaryawanAktif karyawan) {
+        daftarAktif.add(karyawan);
+    }
 
+    public void tambahNonAktif(KaryawanNonAktif karyawan) {
+        daftarNonAktif.add(karyawan);
+    }
+
+    public ArrayList<KaryawanAktif> getDaftarAktif() {
+        return daftarAktif;
+    }
+
+    public ArrayList<KaryawanNonAktif> getDaftarNonAktif() {
+        return daftarNonAktif;
+    }
 }

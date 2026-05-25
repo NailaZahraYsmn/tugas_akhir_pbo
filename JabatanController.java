@@ -7,4 +7,12 @@ public class JabatanController {
     public JabatanController() {
         daftarJabatan = new ArrayList<>();
     }
+
+    public void tambah(Jabatan jabatan) {
+        daftarJabatan.add(jabatan);
+    }
+
+    public ArrayList<Jabatan> getDaftarJabatan() {
+        return daftarJabatan;
+    }
 }
