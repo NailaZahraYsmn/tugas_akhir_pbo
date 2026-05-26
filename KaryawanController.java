@@ -120,4 +120,24 @@ public class KaryawanController {
             System.out.println(k.tampilkanInfo());
         }
     }
+
+    public void nonAktifkanKaryawan(String idKaryawan, String tanggalKeluar, String keterangan) {
+        KaryawanAktif aktif = cariAktif(idKaryawan);
+        if (aktif == null) {
+            System.out.println("Karyawan tidak ditemukan: " + idKaryawan);
+            return;
+        }
+
+        KaryawanNonAktif nonAktif = new KaryawanNonAktif(
+            aktif.getIdKaryawan(),
+            aktif.getNama(),         
+            aktif.getJabatan(),      
+            tanggalKeluar,           
+            keterangan               
+        );
+
+        daftarNonAktif.add(nonAktif);
+        daftarAktif.remove(aktif);
+        System.out.println("Karyawan " + aktif.getNama() + " dipindahkan ke NonAktif.");
+    }
 }
