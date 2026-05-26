@@ -33,13 +33,18 @@ public class JabatanController {
     }
 
     public void edit(String kodeJabatan, Jabatan dataBaru) {
-
+        if (dataBaru == null) {
+            System.out.println("Data baru tidak boleh Kosong.");
+            return;
+        }
         Jabatan jabatan = cari(kodeJabatan);
 
         if (jabatan != null) {
 
             jabatan.setNamaJabatan(dataBaru.getNamaJabatan());
             jabatan.setDepartemen(dataBaru.getDepartemen());
+        } else {
+            System.out.println("Jabatan tidak ditemukan: " + kodeJabatan);
         }
     }
 

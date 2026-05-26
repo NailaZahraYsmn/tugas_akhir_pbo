@@ -59,19 +59,28 @@ public class KaryawanController {
     }
 
     public void editAktif(String idKaryawan, KaryawanAktif dataBaru) {
+        if (dataBaru == null) {
+            System.out.println("Data baru tidak boleh Kosong.");
+            return;
+        }
 
         KaryawanAktif karyawan = cariAktif(idKaryawan);
 
         if (karyawan != null) {
-
+            
             karyawan.setNama(dataBaru.getNama());
             karyawan.setJabatan(dataBaru.getJabatan());
             karyawan.setTanggalMasuk(dataBaru.getTanggalMasuk());
+        } else {
+            System.out.println("Karyawan tidak ditemukan: " + idKaryawan);
         }
     }
 
     public void editNonAktif(String idKaryawan, KaryawanNonAktif dataBaru) {
-
+        if (dataBaru == null) {
+            System.out.println("Data baru tidak boleh Kosong.");
+            return;
+        }
         KaryawanNonAktif karyawan = cariNonAktif(idKaryawan);
 
         if (karyawan != null) {
@@ -80,6 +89,8 @@ public class KaryawanController {
             karyawan.setJabatan(dataBaru.getJabatan());
             karyawan.setTanggalKeluar(dataBaru.getTanggalKeluar());
             karyawan.setKeterangan(dataBaru.getKeterangan());
+        } else {
+            System.out.println("Karyawan tidak ditemukan: " + idKaryawan);
         }
     }
 
