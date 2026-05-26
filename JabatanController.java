@@ -9,6 +9,10 @@ public class JabatanController {
     }
 
     public void tambah(Jabatan jabatan) {
+        if (cari(jabatan.getKodeJabatan()) != null) {
+            System.out.println("Kode jabatan sudah ada: " + jabatan.getKodeJabatan());
+            return;
+        }
         daftarJabatan.add(jabatan);
     }
 

@@ -11,10 +11,18 @@ public class KaryawanController {
     }
 
     public void tambahAktif(KaryawanAktif karyawan) {
+        if (cariAktif(karyawan.getIdKaryawan()) != null) {
+            System.out.println("ID sudah terdaftar : " + karyawan.getIdKaryawan());
+            return;
+        }
         daftarAktif.add(karyawan);
     }
 
     public void tambahNonAktif(KaryawanNonAktif karyawan) {
+        if (cariNonAktif(karyawan.getIdKaryawan()) != null) {
+            System.out.println("ID sudah terdaftar: " + karyawan.getIdKaryawan());
+            return;
+        }
         daftarNonAktif.add(karyawan);
     }
 
