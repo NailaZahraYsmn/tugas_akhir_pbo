@@ -3,9 +3,19 @@ import java.util.ArrayList;
 public class JabatanController {
 
     private ArrayList<Jabatan> daftarJabatan;
+    private ArrayList<KaryawanNonAktif> daftarNonAktif; 
 
     public JabatanController() {
-        daftarJabatan = new ArrayList<>();
+        daftarJabatan  = new ArrayList<>();
+        daftarNonAktif = new ArrayList<>(); 
+    }
+
+    public ArrayList<KaryawanNonAktif> getDaftarNonAktif() {
+        return daftarNonAktif;
+    }
+
+    public ArrayList<Jabatan> getDaftarJabatan() {
+        return daftarJabatan;
     }
 
     public void tambah(Jabatan jabatan) {
@@ -16,9 +26,6 @@ public class JabatanController {
         daftarJabatan.add(jabatan);
     }
 
-    public ArrayList<Jabatan> getDaftarJabatan() {
-        return daftarJabatan;
-    }
 
     public Jabatan cari(String kodeJabatan) {
 
@@ -49,11 +56,13 @@ public class JabatanController {
     }
 
     public void hapus(String kodeJabatan) {
-
         Jabatan jabatan = cari(kodeJabatan);
 
         if (jabatan != null) {
             daftarJabatan.remove(jabatan);
+            System.out.println("Jabatan berhasil dihapus: " + kodeJabatan);
+        } else {
+            System.out.println("Jabatan tidak ditemukan: " + kodeJabatan);
         }
     }
 
