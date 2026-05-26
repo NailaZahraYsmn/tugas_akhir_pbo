@@ -92,4 +92,24 @@ public class KaryawanController {
             daftarNonAktif.remove(karyawan);
         }
     }
+
+    public void tampilkanSemuaAktif() {
+        if (daftarAktif.isEmpty()) {
+            System.out.println("Tidak ada karyawan aktif.");
+            return;
+        }
+        for (KaryawanAktif k : daftarAktif) {
+            System.out.println(k.tampilkanInfo());
+        }
+    }
+
+    public void tampilkanSemuaNonAktif() {
+        if (daftarNonAktif.isEmpty()) {
+            System.out.println("Tidak ada karyawan non-aktif.");
+            return;
+        }
+        for (KaryawanNonAktif k : daftarNonAktif) {
+            System.out.println(k.tampilkanInfo());
+        }
+    }
 }

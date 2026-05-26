@@ -47,4 +47,14 @@ public class JabatanController {
             daftarJabatan.remove(jabatan);
         }
     }
+
+    public void tampilkanSemua() {
+        if (daftarJabatan.isEmpty()) {
+            System.out.println("Belum ada data jabatan.");
+            return;
+        }
+        for (Jabatan j : daftarJabatan) {
+            System.out.println(j.tampilkanInfo());
+        }
+    }
 }
