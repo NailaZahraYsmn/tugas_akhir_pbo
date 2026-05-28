@@ -52,7 +52,7 @@ public class PanelKaryawanAktif extends JPanel {
 
         JPanel formPanel = new JPanel(new GridLayout(8, 2, 8, 8));
         formPanel.setBorder(BorderFactory.createTitledBorder("Form Karyawan Aktif"));
-        formPanel.setPreferredSize(new Dimension(260, 0));
+        formPanel.setPreferredSize(new Dimension(320, 0));
 
         formPanel.add(new JLabel("ID Karyawan:"));
         txtId = new JTextField();
@@ -80,7 +80,7 @@ public class PanelKaryawanAktif extends JPanel {
         txtTanggalMasuk.setToolTipText("Format: DD-MM-YYYY");
         formPanel.add(txtTanggalMasuk);
 
-        JPanel btnPanel = new JPanel(new GridLayout(2, 2, 6, 6));
+        JPanel btnPanel = new JPanel(new GridLayout(4, 1, 6, 6));
         JButton btnTambah = buatTombol("Tambah", BIRU);
         JButton btnEdit   = buatTombol("Edit", ORANGE);
         JButton btnHapus  = buatTombol("Hapus", MERAH);
