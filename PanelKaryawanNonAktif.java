@@ -50,9 +50,9 @@ public class PanelKaryawanNonAktif extends JPanel {
             }
         });
 
-        JPanel formPanel = new JPanel(new GridLayout(10, 2, 8, 8));
+        JPanel formPanel = new JPanel(new GridLayout(9, 2, 8, 8));
         formPanel.setBorder(BorderFactory.createTitledBorder("Form Karyawan Non-Aktif"));
-        formPanel.setPreferredSize(new Dimension(260, 0));
+        formPanel.setPreferredSize(new Dimension(320, 0));
 
         formPanel.add(new JLabel("ID Karyawan:"));
         txtId = new JTextField();
@@ -84,7 +84,7 @@ public class PanelKaryawanNonAktif extends JPanel {
         txtKeterangan = new JTextField();
         formPanel.add(txtKeterangan);
 
-        JPanel btnPanel = new JPanel(new GridLayout(1, 3, 6, 6));
+        JPanel btnPanel = new JPanel(new GridLayout(3,1, 0, 10));
         JButton btnTambah = buatTombol("Tambah", BIRU);
         JButton btnHapus  = buatTombol("Hapus", MERAH);
         JButton btnClear  = buatTombol("Clear", Color.GRAY);
