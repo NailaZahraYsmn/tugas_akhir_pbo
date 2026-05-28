@@ -20,7 +20,7 @@ public class LoginFrame extends JFrame {
     }
 
     private void initUI() {
-        setTitle("Login - PT Maju Makmur");
+        setTitle("Login - PT Makmur Jaya");
         setSize(400, 350);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -30,7 +30,7 @@ public class LoginFrame extends JFrame {
         panel.setBorder(BorderFactory.createEmptyBorder(30, 40, 30, 40));
         panel.setBackground(Color.WHITE);
 
-        JLabel lblJudul = new JLabel("PT Maju Makmur", SwingConstants.CENTER);
+        JLabel lblJudul = new JLabel("PT Makmur Jaya", SwingConstants.CENTER);
         lblJudul.setFont(new Font("Segoe UI", Font.BOLD, 16));
         lblJudul.setForeground(new Color(25, 118, 210));
         panel.add(lblJudul);
