@@ -19,22 +19,22 @@ public class MainFrame extends JFrame {
     }
 
     private void initUI() {
-        setTitle("PT Cahaya Furniture - Sistem Informasi");
+        setTitle("PT Makmur Jaya");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-        // Header
+        // header
         JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.setBackground(BIRU);
         topPanel.setPreferredSize(new Dimension(0, 45));
 
-        JLabel lblJudul = new JLabel("  PT Cahaya Furniture - Sistem Informasi Karyawan");
+        JLabel lblJudul = new JLabel("PT Makmur Jaya - Informasi Karyawan");
         lblJudul.setFont(new Font("Segoe UI", Font.BOLD, 15));
         lblJudul.setForeground(Color.WHITE);
         topPanel.add(lblJudul, BorderLayout.WEST);
 
-        // Tombol Logout
+        // logout
         JButton btnLogout = new JButton("Logout");
         btnLogout.setBackground(MERAH);
         btnLogout.setForeground(Color.WHITE);
@@ -52,7 +52,6 @@ public class MainFrame extends JFrame {
         });
         topPanel.add(btnLogout, BorderLayout.EAST);
 
-        // Tab
         JTabbedPane tabs = new JTabbedPane();
         tabs.setFont(new Font("Segoe UI", Font.BOLD, 13));
         tabs.addTab("Karyawan Aktif", new PanelKaryawanAktif(karyawanController));
