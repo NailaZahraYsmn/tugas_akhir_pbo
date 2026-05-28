@@ -35,7 +35,6 @@ public class LoginFrame extends JFrame {
         lblJudul.setForeground(new Color(25, 118, 210));
         panel.add(lblJudul);
 
-        //username
         JLabel lblUser = new JLabel("Username");
         lblUser.setFont(new Font("Segoe UI", Font.BOLD, 12));
         panel.add(lblUser);
@@ -48,6 +47,7 @@ public class LoginFrame extends JFrame {
         panel.add(lblPass);
 
         txtPassword = new JPasswordField();
+        txtPassword.addActionListener(e -> prosesLogin());
         panel.add(txtPassword);
 
         btnLogin = new JButton("Masuk");
@@ -56,6 +56,8 @@ public class LoginFrame extends JFrame {
         btnLogin.setFocusPainted(false);
         btnLogin.setBorderPainted(false);
         btnLogin.setFont(new Font("Segoe UI", Font.BOLD, 13));
+        btnLogin.addActionListener(e -> prosesLogin());
+        
         panel.add(btnLogin);
 
         add(panel);
@@ -67,7 +69,6 @@ public class LoginFrame extends JFrame {
             String username = txtUsername.getText().trim();
             String password = new String(txtPassword.getPassword()).trim();
 
-            // validasi input
             if (username.isEmpty())
                 throw new IllegalArgumentException("Username tidak boleh kosong!");
             if (password.isEmpty())
@@ -77,7 +78,6 @@ public class LoginFrame extends JFrame {
             if (password.length() < 6)
                 throw new IllegalArgumentException("Password minimal 6 karakter!");
 
-            // cek login
             boolean berhasil = authController.login(username, password);
             if (berhasil) {
                 JOptionPane.showMessageDialog(this, "Login berhasil! Selamat datang, " + username, "Sukses", JOptionPane.INFORMATION_MESSAGE);
@@ -90,10 +90,8 @@ public class LoginFrame extends JFrame {
             }
 
         } catch (IllegalArgumentException e) {
-            // validasi input gagal
             JOptionPane.showMessageDialog(this, e.getMessage(), "Validasi Error", JOptionPane.WARNING_MESSAGE);
         } catch (Exception e) {
-            // error tidak terduga
             JOptionPane.showMessageDialog(this, "Terjadi kesalahan sistem!", "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
