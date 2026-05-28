@@ -3,7 +3,6 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class PanelKaryawanNonAktif extends JPanel {
-    
     private KaryawanController karyawanController;
     private JTable tabel;
     private DefaultTableModel modelTabel;
