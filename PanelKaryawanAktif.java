@@ -1,12 +1,17 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.*;
 
 public class PanelKaryawanAktif extends JPanel {
     private KaryawanController karyawanController;
     private JTable tabel;
     private DefaultTableModel modelTabel;
-    private static final Color BIRU = new Color(25, 118, 210);
+    private JTextField txtId, txtNama, txtKodeJabatan, txtNamaJabatan, txtDepartemen, txtTanggalMasuk;
+
+    private static final Color BIRU   = new Color(25, 118, 210);
+    private static final Color MERAH  = new Color(198, 40, 40);
+    private static final Color ORANGE = new Color(245, 124, 0);
 
     public PanelKaryawanAktif(KaryawanController karyawanController) {
         this.karyawanController = karyawanController;
@@ -29,6 +34,76 @@ public class PanelKaryawanAktif extends JPanel {
         tabel.getTableHeader().setBackground(BIRU);
         tabel.getTableHeader().setForeground(Color.WHITE);
 
+        tabel.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                int baris = tabel.getSelectedRow();
+                if (baris >= 0) {
+                    txtId.setText(modelTabel.getValueAt(baris, 0).toString());
+                    txtNama.setText(modelTabel.getValueAt(baris, 1).toString());
+                    txtKodeJabatan.setText("");
+                    txtNamaJabatan.setText(modelTabel.getValueAt(baris, 2).toString());
+                    txtDepartemen.setText(modelTabel.getValueAt(baris, 3).toString());
+                    txtTanggalMasuk.setText(modelTabel.getValueAt(baris, 4).toString());
+                }
+            }
+        });
+
+        JPanel formPanel = new JPanel(new GridLayout(8, 2, 8, 8));
+        formPanel.setBorder(BorderFactory.createTitledBorder("Form Karyawan Aktif"));
+        formPanel.setPreferredSize(new Dimension(260, 0));
+
+        formPanel.add(new JLabel("ID Karyawan:"));
+        txtId = new JTextField();
+        formPanel.add(txtId);
+
+        formPanel.add(new JLabel("Nama:"));
+        txtNama = new JTextField();
+        formPanel.add(txtNama);
+
+        formPanel.add(new JLabel("Kode Jabatan:"));
+        txtKodeJabatan = new JTextField();
+        txtKodeJabatan.setToolTipText("Contoh: JB01");
+        formPanel.add(txtKodeJabatan);
+
+        formPanel.add(new JLabel("Nama Jabatan:"));
+        txtNamaJabatan = new JTextField();
+        formPanel.add(txtNamaJabatan);
+
+        formPanel.add(new JLabel("Departemen:"));
+        txtDepartemen = new JTextField();
+        formPanel.add(txtDepartemen);
+
+        formPanel.add(new JLabel("Tanggal Masuk:"));
+        txtTanggalMasuk = new JTextField();
+        txtTanggalMasuk.setToolTipText("Format: DD-MM-YYYY");
+        formPanel.add(txtTanggalMasuk);
+
+        JPanel btnPanel = new JPanel(new GridLayout(2, 2, 6, 6));
+        JButton btnTambah = buatTombol("Tambah", BIRU);
+        JButton btnEdit   = buatTombol("Edit", ORANGE);
+        JButton btnHapus  = buatTombol("Hapus", MERAH);
+        JButton btnClear  = buatTombol("Clear", Color.GRAY);
+
+        btnPanel.add(btnTambah);
+        btnPanel.add(btnEdit);
+        btnPanel.add(btnHapus);
+        btnPanel.add(btnClear);
+
+        formPanel.add(new JLabel());
+        formPanel.add(btnPanel);
+
         add(new JScrollPane(tabel), BorderLayout.CENTER);
+        add(formPanel, BorderLayout.EAST);
+    }
+
+    private JButton buatTombol(String teks, Color bg) {
+        JButton btn = new JButton(teks);
+        btn.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        btn.setBackground(bg);
+        btn.setForeground(Color.WHITE);
+        btn.setFocusPainted(false);
+        btn.setBorderPainted(false);
+        btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        return btn;
     }
 }
