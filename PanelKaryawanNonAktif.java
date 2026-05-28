@@ -50,7 +50,7 @@ public class PanelKaryawanNonAktif extends JPanel {
             }
         });
 
-        JPanel formPanel = new JPanel(new GridLayout(9, 2, 8, 8));
+        JPanel formPanel = new JPanel(new GridLayout(10, 2, 8, 8));
         formPanel.setBorder(BorderFactory.createTitledBorder("Form Karyawan Non-Aktif"));
         formPanel.setPreferredSize(new Dimension(260, 0));
 
@@ -84,7 +84,30 @@ public class PanelKaryawanNonAktif extends JPanel {
         txtKeterangan = new JTextField();
         formPanel.add(txtKeterangan);
 
+        JPanel btnPanel = new JPanel(new GridLayout(1, 3, 6, 6));
+        JButton btnTambah = buatTombol("Tambah", BIRU);
+        JButton btnHapus  = buatTombol("Hapus", MERAH);
+        JButton btnClear  = buatTombol("Clear", Color.GRAY);
+
+        btnPanel.add(btnTambah);
+        btnPanel.add(btnHapus);
+        btnPanel.add(btnClear);
+
+        formPanel.add(new JLabel());
+        formPanel.add(btnPanel);
+
         add(new JScrollPane(tabel), BorderLayout.CENTER);
         add(formPanel, BorderLayout.EAST);
+    }
+
+    private JButton buatTombol(String teks, Color bg) {
+        JButton btn = new JButton(teks);
+        btn.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        btn.setBackground(bg);
+        btn.setForeground(Color.WHITE);
+        btn.setFocusPainted(false);
+        btn.setBorderPainted(false);
+        btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        return btn;
     }
 }
