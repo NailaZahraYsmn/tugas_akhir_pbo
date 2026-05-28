@@ -24,7 +24,6 @@ public class MainFrame extends JFrame {
         setLocationRelativeTo(null);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-        // header
         JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.setBackground(BIRU);
         topPanel.setPreferredSize(new Dimension(0, 45));
@@ -34,7 +33,6 @@ public class MainFrame extends JFrame {
         lblJudul.setForeground(Color.WHITE);
         topPanel.add(lblJudul, BorderLayout.WEST);
 
-        // logout
         JButton btnLogout = new JButton("Logout");
         btnLogout.setBackground(MERAH);
         btnLogout.setForeground(Color.WHITE);
