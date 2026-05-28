@@ -89,6 +89,10 @@ public class PanelKaryawanNonAktif extends JPanel {
         JButton btnHapus  = buatTombol("Hapus", MERAH);
         JButton btnClear  = buatTombol("Clear", Color.GRAY);
 
+        btnTambah.addActionListener(e -> tambah());
+        btnHapus.addActionListener(e -> hapus());
+        btnClear.addActionListener(e -> clear());
+
         btnPanel.add(btnTambah);
         btnPanel.add(btnHapus);
         btnPanel.add(btnClear);
@@ -98,6 +102,80 @@ public class PanelKaryawanNonAktif extends JPanel {
 
         add(new JScrollPane(tabel), BorderLayout.CENTER);
         add(formPanel, BorderLayout.EAST);
+    }
+
+    private void tambah() {
+        try {
+            String id      = txtId.getText().trim();
+            String nama    = txtNama.getText().trim();
+            String kode    = txtKodeJabatan.getText().trim();
+            String namaJab = txtNamaJabatan.getText().trim();
+            String dept    = txtDepartemen.getText().trim();
+            String tgl     = txtTanggalKeluar.getText().trim();
+            String ket     = txtKeterangan.getText().trim();
+
+            if (id.isEmpty() || nama.isEmpty() || kode.isEmpty() ||
+                namaJab.isEmpty() || dept.isEmpty() || tgl.isEmpty())
+                throw new IllegalArgumentException("Semua field harus diisi!");
+
+            Jabatan jabatan      = new Jabatan(kode, namaJab, dept);
+            KaryawanNonAktif k   = new KaryawanNonAktif(id, nama, jabatan, tgl, ket);
+            karyawanController.tambahNonAktif(k);
+            refresh();
+            clear();
+            JOptionPane.showMessageDialog(this, "Karyawan berhasil ditambahkan!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Validasi Error", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Terjadi kesalahan!", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }
+
+    private void hapus() {
+        try {
+            String id = txtId.getText().trim();
+            if (id.isEmpty())
+                throw new IllegalArgumentException("Pilih karyawan yang ingin dihapus!");
+
+            int konfirmasi = JOptionPane.showConfirmDialog(this,
+                "Yakin hapus karyawan ini?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+            if (konfirmasi == JOptionPane.YES_OPTION) {
+                karyawanController.hapusNonAktif(id);
+                refresh();
+                clear();
+                JOptionPane.showMessageDialog(this, "Karyawan berhasil dihapus!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Validasi Error", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    private void refresh() {
+        modelTabel.setRowCount(0);
+        for (KaryawanNonAktif k : karyawanController.getDaftarNonAktif()) {
+            modelTabel.addRow(new Object[]{
+                k.getIdKaryawan(),
+                k.getNama(),
+                k.getJabatan().getNamaJabatan(),
+                k.getJabatan().getDepartemen(),
+                k.getTanggalKeluar(),
+                k.getStatus(),
+                k.getKeterangan()
+            });
+        }
+    }
+
+    private void clear() {
+        txtId.setText("");
+        txtNama.setText("");
+        txtKodeJabatan.setText("");
+        txtNamaJabatan.setText("");
+        txtDepartemen.setText("");
+        txtTanggalKeluar.setText("");
+        txtKeterangan.setText("");
     }
 
     private JButton buatTombol(String teks, Color bg) {
