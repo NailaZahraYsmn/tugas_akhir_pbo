@@ -26,7 +26,7 @@ public class PanelPerusahaan extends JPanel {
         lblJudul.setFont(new Font("Segoe UI", Font.BOLD, 20));
         lblJudul.setForeground(BIRU);
         g.gridy = 0;
-        panel.add(lblJudul, g);
+        add(lblJudul, g);
 
         JSeparator sep = new JSeparator();
         g.gridy = 1;
