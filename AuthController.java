@@ -41,4 +41,8 @@ public class AuthController {
         System.out.println(userAktif.getUsername() + " berhasil logout.");
         userAktif = null;
     }
+
+    public boolean isLoggedIn() {
+        return userAktif != null;
+    }
 }
