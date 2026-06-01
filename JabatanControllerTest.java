@@ -6,15 +6,14 @@ public class JabatanControllerTest {
  
     private JabatanController jabatanCtrl;
     private Jabatan jabatan1;
-    private Jabatan jabatan2;
  
     @BeforeEach
     void setUp() {
         jabatanCtrl = new JabatanController();
         jabatan1 = new Jabatan("J001", "Staff", "Tim IT");
-        jabatan2 = new Jabatan("J002", "HR Manager", "SDM");
     }
- 
+
+
     @Test
     void testTambahJabatanBerhasil() {
         jabatanCtrl.tambah(jabatan1);
