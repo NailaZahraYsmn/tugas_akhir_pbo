@@ -4,10 +4,12 @@ public class KaryawanController {
 
     private ArrayList<KaryawanAktif> daftarAktif;
     private ArrayList<KaryawanNonAktif> daftarNonAktif;
+    private ArrayList<KaryawanMagang> daftarMagang;
 
     public KaryawanController() {
         daftarAktif = new ArrayList<>();
         daftarNonAktif = new ArrayList<>();
+        daftarMagang = new ArrayList<>();
     }
 
     public void tambahAktif(KaryawanAktif karyawan) {
@@ -25,6 +27,13 @@ public class KaryawanController {
         }
         daftarNonAktif.add(karyawan);
     }
+    public void tambahMagang(KaryawanMagang karyawan) {
+        if (cariMagang(karyawan.getIdKaryawan()) != null) {
+            System.out.println("ID sudah terdaftar: " + karyawan.getIdKaryawan());
+            return;
+        }
+        daftarMagang.add(karyawan);
+    }
 
     public ArrayList<KaryawanAktif> getDaftarAktif() {
         return daftarAktif;
@@ -34,6 +43,9 @@ public class KaryawanController {
         return daftarNonAktif;
     }
 
+    public ArrayList<KaryawanMagang> getDaftarMagang() {
+        return daftarMagang;
+    }
     public KaryawanAktif cariAktif(String idKaryawan) {
 
         for (KaryawanAktif karyawan : daftarAktif) {
@@ -57,7 +69,18 @@ public class KaryawanController {
 
         return null;
     }
+    public KaryawanMagang cariMagang(String idKaryawan) {
 
+        for (KaryawanMagang karyawan : daftarMagang) {
+
+            if (karyawan.getIdKaryawan().equalsIgnoreCase(idKaryawan)) {
+                return karyawan;
+            }
+        }
+
+        return null;
+    }
+    
     public void editAktif(String idKaryawan, KaryawanAktif dataBaru) {
         if (dataBaru == null) {
             System.out.println("Data baru tidak boleh Kosong.");
@@ -122,6 +145,16 @@ public class KaryawanController {
         }
     }
 
+    public void tampilkanSemuaMagang() {
+        if (daftarMagang.isEmpty()) {
+            System.out.println("Tidak ada karyawan magang.");
+            return;
+        }
+        for (KaryawanMagang k : daftarMagang) {
+            System.out.println(k.tampilkanInfo());
+        }
+    }
+
     public void tampilkanSemuaNonAktif() {
         if (daftarNonAktif.isEmpty()) {
             System.out.println("Tidak ada karyawan non-aktif.");
@@ -146,7 +179,6 @@ public class KaryawanController {
             tanggalKeluar,           
             keterangan               
         );
-
         daftarNonAktif.add(nonAktif);
         daftarAktif.remove(aktif);
         System.out.println("Karyawan " + aktif.getNama() + " dipindahkan ke NonAktif.");
