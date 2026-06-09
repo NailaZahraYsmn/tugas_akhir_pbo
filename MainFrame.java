@@ -54,6 +54,7 @@ public class MainFrame extends JFrame {
         tabs.setFont(new Font("Segoe UI", Font.BOLD, 13));
         tabs.addTab("Karyawan Aktif", new PanelKaryawanAktif(karyawanController));
         tabs.addTab("Karyawan Non-Aktif", new PanelKaryawanNonAktif(karyawanController));
+        tabs.addTab("Karyawan Magang", new PanelKaryawanMagang(karyawanController));
         tabs.addTab("Perusahaan", new PanelPerusahaan(perusahaan));
 
         add(topPanel, BorderLayout.NORTH);

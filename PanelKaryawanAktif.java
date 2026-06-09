@@ -14,6 +14,7 @@ public class PanelKaryawanAktif extends JPanel {
     private static final Color BIRU   = new Color(25, 118, 210);
     private static final Color MERAH  = new Color(198, 40, 40);
     private static final Color ORANGE = new Color(245, 124, 0);
+    private static final Color HIJAU  = new Color(46, 125, 50);
 
     public PanelKaryawanAktif(KaryawanController karyawanController) {
         this.karyawanController = karyawanController;
@@ -80,21 +81,24 @@ public class PanelKaryawanAktif extends JPanel {
         txtTanggalMasuk.setToolTipText("Format: DD-MM-YYYY");
         formPanel.add(txtTanggalMasuk);
 
-        JPanel btnPanel = new JPanel(new GridLayout(4, 1, 6, 6));
+        JPanel btnPanel = new JPanel(new GridLayout(5, 1, 6, 6));
         JButton btnTambah = buatTombol("Tambah", BIRU);
         JButton btnEdit   = buatTombol("Edit", ORANGE);
         JButton btnHapus  = buatTombol("Hapus", MERAH);
         JButton btnClear  = buatTombol("Clear", Color.GRAY);
+        JButton btnFilter = buatTombol("Filter Magang", HIJAU);
 
         btnTambah.addActionListener(e -> tambah());
         btnEdit.addActionListener(e -> edit());
         btnHapus.addActionListener(e -> hapus());
         btnClear.addActionListener(e -> clear());
+        btnFilter.addActionListener(e -> filterMagang());
 
         btnPanel.add(btnTambah);
         btnPanel.add(btnEdit);
         btnPanel.add(btnHapus);
         btnPanel.add(btnClear);
+        btnPanel.add(btnFilter);
 
         formPanel.add(new JLabel());
         formPanel.add(btnPanel);
@@ -177,6 +181,28 @@ public class PanelKaryawanAktif extends JPanel {
 
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Validasi Error", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    private void filterMagang() {
+        modelTabel.setRowCount(0);
+        var hasil = karyawanController.filterKaryawanMagang();
+        if (hasil.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                "Tidak ada karyawan magang.", "Info",
+                JOptionPane.INFORMATION_MESSAGE);
+            refresh();
+            return;
+        }
+        for (KaryawanMagang km : hasil) {
+            modelTabel.addRow(new Object[]{
+                km.getIdKaryawan(),
+                km.getNama(),
+                km.getJabatan().getNamaJabatan(),
+                km.getJabatan().getDepartemen(),
+                km.getTanggalMasuk(),
+                km.getStatus()
+            });
         }
     }
 
