@@ -35,6 +35,17 @@ public class KaryawanPremiumController {
         return null;
     }
 
+    public void edit(String idKaryawan, KaryawanPremium dataBaru) {
+        KaryawanPremium k = cari(idKaryawan);
+        if (k != null) {
+            k.setNama(dataBaru.getNama());
+            k.setJabatan(dataBaru.getJabatan());
+            k.setTanggalMasuk(dataBaru.getTanggalMasuk());
+            k.setTunjangan(dataBaru.getTunjangan());
+            k.setLevelPremium(dataBaru.getLevelPremium());
+        }
+    }
+
     public ArrayList<KaryawanPremium> filterByLevel(String level) {
         ArrayList<KaryawanPremium> hasil = new ArrayList<>();
         for (KaryawanPremium k : daftarPremium) {
