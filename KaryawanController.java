@@ -151,4 +151,14 @@ public class KaryawanController {
         daftarAktif.remove(aktif);
         System.out.println("Karyawan " + aktif.getNama() + " dipindahkan ke NonAktif.");
     }
+
+    public ArrayList<KaryawanMagang> filterKaryawanMagang() {
+        ArrayList<KaryawanMagang> hasil = new ArrayList<>();
+        for (KaryawanAktif k : daftarAktif) {
+            if (k instanceof KaryawanMagang) {
+                hasil.add((KaryawanMagang) k);
+            }
+        }
+        return hasil;
+    }
 }
