@@ -189,7 +189,6 @@ public class KaryawanController {
         if (daftarMagang.isEmpty()) {
             throw new InputTidakValidException("Gagal mengurutkan! Data Karyawan Magang masih kosong.");
         }
-        
         daftarMagang.sort((k1, k2) -> k1.getNama().compareToIgnoreCase(k2.getNama()));
         System.out.println("Data karyawan magang berhasil diurutkan berdasarkan nama.");
     }
