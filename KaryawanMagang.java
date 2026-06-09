@@ -7,4 +7,13 @@ public class KaryawanMagang extends Karyawan {
         }
         this.DurasiMagang = DurasiMagang;
     }
+    public String getDurasiMagang() {
+        return DurasiMagang;
+    }
+    public void setDurasiMagang(String DurasiMagang) {
+        if (DurasiMagang == null || DurasiMagang.isEmpty()) {
+            throw new IllegalArgumentException("Durasi magang tidak boleh kosong.");
+        }
+        this.DurasiMagang = DurasiMagang;
+    }
 }
