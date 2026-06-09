@@ -55,7 +55,6 @@ public class MainFrame extends JFrame {
         tabs.addTab("Karyawan Aktif", new PanelKaryawanAktif(karyawanController));
         tabs.addTab("Karyawan Non-Aktif", new PanelKaryawanNonAktif(karyawanController));
         tabs.addTab("Perusahaan", new PanelPerusahaan(perusahaan));
-
         add(topPanel, BorderLayout.NORTH);
         add(tabs, BorderLayout.CENTER);
         setVisible(true);
