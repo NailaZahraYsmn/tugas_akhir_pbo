@@ -125,13 +125,13 @@ to discuss what you would like to change.
 Please make sure to update tests as appropriate.
 ```
 ---
-**## Update Versi 2.0**
+## Update Versi 2.0
 
 Class `KaryawanMagang` merupakan subclass dari `KaryawanAktif` yang digunakan untuk merepresentasikan karyawan dengan status magang dalam sistem manajemen perusahaan. Class ini menambahkan atribut khusus berupa `durasiMagang` untuk menyimpan lama masa magang karyawan.
 
 ---
 
-## Fitur Utama
+**Fitur Utama**
 - Mewarisi data dari `KaryawanAktif`
 - Menambahkan atribut `durasiMagang` (dalam bulan)
 - Validasi input durasi magang (harus lebih dari 0)
@@ -140,15 +140,15 @@ Class `KaryawanMagang` merupakan subclass dari `KaryawanAktif` yang digunakan un
 
 ---
 
-## Struktur Class
+**Struktur Class**
 
-### Atribut
+**Atribut**
 - `private int durasiMagang`  
   Menyimpan lama masa magang karyawan (dalam bulan)
 
 ---
 
-### Constructor
+**Constructor**
 ```java
 KaryawanMagang(String idKaryawan, String nama, Jabatan jabatan,
                String tanggalMasuk, int durasiMagang)
