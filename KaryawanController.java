@@ -80,7 +80,7 @@ public class KaryawanController {
 
         return null;
     }
-    
+
     public void editAktif(String idKaryawan, KaryawanAktif dataBaru) {
         if (dataBaru == null) {
             System.out.println("Data baru tidak boleh Kosong.");
@@ -182,5 +182,15 @@ public class KaryawanController {
         daftarNonAktif.add(nonAktif);
         daftarAktif.remove(aktif);
         System.out.println("Karyawan " + aktif.getNama() + " dipindahkan ke NonAktif.");
+    }
+
+    public void urutkanMagangBerdasarkanNama() throws InputTidakValidException {
+       
+        if (daftarMagang.isEmpty()) {
+            throw new InputTidakValidException("Gagal mengurutkan! Data Karyawan Magang masih kosong.");
+        }
+        
+        daftarMagang.sort((k1, k2) -> k1.getNama().compareToIgnoreCase(k2.getNama()));
+        System.out.println("Data karyawan magang berhasil diurutkan berdasarkan nama.");
     }
 }
